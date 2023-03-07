@@ -47,7 +47,144 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Success Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "user2@member.id",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "151"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"97-m8RmyoAVbQzPHg1FFkHffPl2wD0\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 10:22:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc4MTg0NTQ5LCJleHAiOjE2NzgyNzA5NDl9.BeIpOHVswvOBSnegErNm6THOIqaIkoIbHYgt6mIGX9A\"\n}"
+				},
+				{
+					"name": "Bad Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "user3@member.id",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c-ZEVVcvtFhxKX/QUvVKqKxwGbbNA\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 10:22:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"User not found\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Find Award",
@@ -80,7 +217,150 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Unauthorized",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/awards?min_point=100000&max_point=1000000&award_types=[1,2]",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"awards"
+							],
+							"query": [
+								{
+									"key": "min_point",
+									"value": "100000"
+								},
+								{
+									"key": "max_point",
+									"value": "1000000"
+								},
+								{
+									"key": "award_types",
+									"value": "[1,2]"
+								}
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "27"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1b-+hyVTXaAZn38wYQ0jjrBzf9HwPI\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 10:22:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Unauthorized!\"\n}"
+				},
+				{
+					"name": "Success Find",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/awards?min_point=100000&max_point=1000000&award_types=[1,2]",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"awards"
+							],
+							"query": [
+								{
+									"key": "min_point",
+									"value": "100000"
+								},
+								{
+									"key": "max_point",
+									"value": "1000000"
+								},
+								{
+									"key": "award_types",
+									"value": "[1,2]"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "796"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"31c-bcklDvU6nRVO5GjpMyhaMsjGPlI\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 10:23:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": {\n        \"data\": [\n            {\n                \"id\": 1,\n                \"points\": 1000000,\n                \"image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png\",\n                \"award_type\": {\n                    \"id\": 1,\n                    \"name\": \"vouchers\"\n                },\n                \"voucher\": {\n                    \"id\": 1,\n                    \"name\": \"Gift Card IDR 1.000.000\"\n                },\n                \"product\": null\n            },\n            {\n                \"id\": 2,\n                \"points\": 500000,\n                \"image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png\",\n                \"award_type\": {\n                    \"id\": 1,\n                    \"name\": \"vouchers\"\n                },\n                \"voucher\": {\n                    \"id\": 2,\n                    \"name\": \"Gift Card IDR 500.000\"\n                },\n                \"product\": null\n            },\n            {\n                \"id\": 3,\n                \"points\": 100000,\n                \"image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png\",\n                \"award_type\": {\n                    \"id\": 2,\n                    \"name\": \"products\"\n                },\n                \"voucher\": null,\n                \"product\": {\n                    \"id\": 1,\n                    \"name\": \"Old Fashion Cake\"\n                }\n            }\n        ],\n        \"total_pages\": 1,\n        \"current_page\": 1,\n        \"limit\": 10\n    }\n}"
+				}
+			]
 		}
 	],
 	"auth": {
