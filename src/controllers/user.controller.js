@@ -21,7 +21,10 @@ exports.login = async (req, res) => {
       });
     }
     res.status(200).send({
-      message: token,
+      message: {
+        token: token,
+        expiredIn: new Date().getTime() + Number(process.env.TOKEN_EXPIRY) * 1000,
+      },
     });
   } catch (err) {
     res.status(500).send({
