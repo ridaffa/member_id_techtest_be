@@ -18,4 +18,4 @@ This repository contains a Node.js backend for a Member ID Tech Test. It uses Po
 
 ## Documentation
 
-The Postman documentation is located in `postman/Member ID Tech Test.postman_collection.json`. It contains all the available endpoints with examples of requests and responses.
+The Postman documentation is located in `postmandocs/Member ID Tech Test.postman_collection.json`. It contains all the available endpoints with examples of requests and responses.
