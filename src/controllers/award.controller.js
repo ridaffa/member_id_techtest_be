@@ -4,8 +4,9 @@ exports.find = async (req, res) => {
   try {
     const page = req.query.page || 1;
     const limit = req.query.limit || 10;
-    const minPoint = req.query.min_point || 0;
+    let minPoint = req.query.min_point || 0;
     const maxPoint = req.query.max_point || 0;
+    minPoint = Number(minPoint) > Number(maxPoint) ? 0 : minPoint;
     const awardTypeIdsStr = JSON.parse(req.query.award_types) || [];
     const awardTypeIds = awardTypeIdsStr.map(Number);
     const data = await awardService.find(minPoint, maxPoint, awardTypeIds, page, limit);
