@@ -15,7 +15,7 @@
 						"exec": [
 							"const response = pm.response.json()\r",
 							"\r",
-							"pm.environment.set(\"jwt\", response.message)"
+							"pm.environment.set(\"jwt\", response.message.token)"
 						],
 						"type": "text/javascript"
 					}
@@ -192,7 +192,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/api/awards?min_point=100000&max_point=1000000&award_types=[1,2]",
+					"raw": "localhost:8000/api/awards?min_point=50000&max_point=1500000&award_types=[1,2]&page=1&limit=2",
 					"host": [
 						"localhost"
 					],
@@ -204,27 +204,35 @@
 					"query": [
 						{
 							"key": "min_point",
-							"value": "100000"
+							"value": "50000"
 						},
 						{
 							"key": "max_point",
-							"value": "1000000"
+							"value": "1500000"
 						},
 						{
 							"key": "award_types",
 							"value": "[1,2]"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "2"
 						}
 					]
 				}
 			},
 			"response": [
 				{
-					"name": "Unauthorized",
+					"name": "Success Find",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/api/awards?min_point=100000&max_point=1000000&award_types=[1,2]",
+							"raw": "localhost:8000/api/awards?min_point=50000&max_point=1500000&award_types=[1,2]&page=2&limit=2",
 							"host": [
 								"localhost"
 							],
@@ -236,15 +244,102 @@
 							"query": [
 								{
 									"key": "min_point",
-									"value": "100000"
+									"value": "50000"
 								},
 								{
 									"key": "max_point",
-									"value": "1000000"
+									"value": "1500000"
 								},
 								{
 									"key": "award_types",
 									"value": "[1,2]"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "308"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"134-WyE47yMeSMwlm5GPQhWoQdxXLF4\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 08 Mar 2023 01:19:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": {\n        \"data\": [\n            {\n                \"id\": 3,\n                \"points\": 100000,\n                \"image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png\",\n                \"award_type\": {\n                    \"id\": 2,\n                    \"name\": \"products\"\n                },\n                \"voucher\": null,\n                \"product\": {\n                    \"id\": 1,\n                    \"name\": \"Old Fashion Cake\"\n                }\n            }\n        ],\n        \"total_pages\": 2,\n        \"current_page\": \"2\",\n        \"limit\": \"2\"\n    }\n}"
+				},
+				{
+					"name": "Unauthorized Find",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/awards?min_point=50000&max_point=1500000&award_types=[1,2]&page=2&limit=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"awards"
+							],
+							"query": [
+								{
+									"key": "min_point",
+									"value": "50000"
+								},
+								{
+									"key": "max_point",
+									"value": "1500000"
+								},
+								{
+									"key": "award_types",
+									"value": "[1,2]"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "2"
 								}
 							]
 						}
@@ -275,7 +370,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Tue, 07 Mar 2023 10:22:57 GMT"
+							"value": "Wed, 08 Mar 2023 01:20:34 GMT"
 						},
 						{
 							"key": "Connection",
@@ -288,77 +383,6 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"message\": \"Unauthorized!\"\n}"
-				},
-				{
-					"name": "Success Find",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8000/api/awards?min_point=100000&max_point=1000000&award_types=[1,2]",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"awards"
-							],
-							"query": [
-								{
-									"key": "min_point",
-									"value": "100000"
-								},
-								{
-									"key": "max_point",
-									"value": "1000000"
-								},
-								{
-									"key": "award_types",
-									"value": "[1,2]"
-								}
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "796"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"31c-bcklDvU6nRVO5GjpMyhaMsjGPlI\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 07 Mar 2023 10:23:40 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": {\n        \"data\": [\n            {\n                \"id\": 1,\n                \"points\": 1000000,\n                \"image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png\",\n                \"award_type\": {\n                    \"id\": 1,\n                    \"name\": \"vouchers\"\n                },\n                \"voucher\": {\n                    \"id\": 1,\n                    \"name\": \"Gift Card IDR 1.000.000\"\n                },\n                \"product\": null\n            },\n            {\n                \"id\": 2,\n                \"points\": 500000,\n                \"image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png\",\n                \"award_type\": {\n                    \"id\": 1,\n                    \"name\": \"vouchers\"\n                },\n                \"voucher\": {\n                    \"id\": 2,\n                    \"name\": \"Gift Card IDR 500.000\"\n                },\n                \"product\": null\n            },\n            {\n                \"id\": 3,\n                \"points\": 100000,\n                \"image\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png\",\n                \"award_type\": {\n                    \"id\": 2,\n                    \"name\": \"products\"\n                },\n                \"voucher\": null,\n                \"product\": {\n                    \"id\": 1,\n                    \"name\": \"Old Fashion Cake\"\n                }\n            }\n        ],\n        \"total_pages\": 1,\n        \"current_page\": 1,\n        \"limit\": 10\n    }\n}"
 				}
 			]
 		}
