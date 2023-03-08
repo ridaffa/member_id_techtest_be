@@ -8,7 +8,7 @@ const login = async (email) => {
     return null;
   }
   const token = jwt.sign({ id: rows[0].id }, config.secret, {
-    expiresIn: process.env.TOKEN_EXPIRY,
+    expiresIn: Number(process.env.TOKEN_EXPIRY),
   });
   return token;
 };

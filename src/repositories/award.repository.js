@@ -31,9 +31,9 @@ const find = async (minPoint, maxPoint, awardTypeIds, offset, limit) => {
     )as products ON awards.product_id = products.id 
     WHERE deleted_at IS NULL
     AND awards.points >= $1
-    ${maxPoint === 0 || maxPoint < minPoint ? "" : "AND awards.points <= $2"}
-    AND awards.award_type_id IN (${awardTypeIds.length === 0 ? "NULL" : awardTypeIds.join(", ")
-    })
+    AND awards.points <= $2
+    AND awards.award_type_id ${awardTypeIds.length === 0 ? "IS NOT NULL" : `IN (${awardTypeIds.join(", ")})`
+    }
     ORDER BY awards.award_type_id ASC, awards.points DESC
     LIMIT $3 
     OFFSET $4`,

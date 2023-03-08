@@ -11,7 +11,7 @@ exports.find = async (req, res) => {
     const awardTypeIds = awardTypeIdsStr.map(Number);
     const data = await awardService.find(minPoint, maxPoint, awardTypeIds, page, limit);
     res.status(200).send({
-      message: { data: data.rows, total_pages: data.totalPages, current_page: page, limit: limit },
+      message: { data: data.rows, total_pages: data.totalPages, current_page: Number(page), limit: limit },
     });
   } catch (err) {
     res.status(500).send({
